@@ -28,7 +28,7 @@ services:
   spark-worker:
     image: docker.io/bitnami/spark:3.5
     volumes:
-      - /Volumes/Workhub/Personal/Python/data/world-championship-history/F1-History:/home/spark/data
+      - /Volumes/Workhub/Personal/Datascience/Spark/data/world-championship-history/F1-History:/home/spark/data
     environment:
       - SPARK_MODE=worker
       - SPARK_MASTER_URL=spark://spark:7077

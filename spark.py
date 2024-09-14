@@ -1,5 +1,8 @@
 from pyspark.sql import SparkSession
-from pyspark import SparkFiles
+import os
+import glob
+
+# from pyspark import SparkFiles
 
 # spark = SparkSession.builder.appName('abc').getOrCreate()
 spark = (SparkSession.builder
@@ -10,17 +13,20 @@ spark = (SparkSession.builder
 
             .getOrCreate()) ## Running in docker container
 
-
-# df=(spark.read.format("csv")
-#       .option("recursiveFileLookup", "true")
-#       .option("pathGlobFilter","*.csv")
-#       .csv("/Volumes/Workhub/Personal/Python/data/world-championship-history/F1-History",header=True))
-      # .load("dbfs:/FileStore/tables/A/",header=True))
+print(os.getcwd())
+print(os.listdir())
 
 df=(spark.read.format("csv")
       .option("recursiveFileLookup", "true")
       .option("pathGlobFilter","*.csv")
-      .csv("/home/spark/data",header=True))
+      .csv("/Volumes/Workhub/Personal/Datascience/Spark/data/world-championship-history/F1-History",header=True))
+      # .load("dbfs:/FileStore/tables/A/",header=True))
+
+
+# df=(spark.read.format("csv")
+#       .option("recursiveFileLookup", "true")
+#       .option("pathGlobFilter","*.csv")
+#       .csv("/home/spark/data",header=True))
       # .csv("file:////Volumes/Workhub/Personal/Python/data/world-championship-history/F1-History",header=True))
 
 # sc = spark.sparkContext
@@ -29,8 +35,9 @@ df=(spark.read.format("csv")
 
 #                  .get('Crimes.csv'))
 
-df.show()
+# df.show()
 
 
-print("----------- count: %s",df.count())
-print(f"----------- count: {df.count()}",)
+# print("----------- count: %s",df.count())
+# print(f"----------- count: {df.count()}",)
+
